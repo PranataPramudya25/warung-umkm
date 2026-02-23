@@ -58,14 +58,15 @@ export default function POSApp() {
   // --- MANTRA AMBIL DATA DARI NEON ---
   const fetchProducts = async () => {
     try {
-      const res = await fetch('/api/products');
+      const res = await fetch('/api/products', { cache: 'no-store' }); // Paksa ambil data baru
       const data = await res.json();
+      console.log("Data dari Neon:", data); // Cek di console apakah list barang lu muncul
       setProducts(data);
     } catch (err) {
       console.error("Gagal tarik data:", err);
     }
   };
-
+  
   useEffect(() => {
     setIsClient(true);
     fetchProducts(); // Ambil data pas web dibuka
