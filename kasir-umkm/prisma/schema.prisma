@@ -4,11 +4,15 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  // Baris url dihapus dari sini
+
 }
 
 model product {
-  id    Int     @id @default(autoincrement())
-  name  String
-  price Int
+  id        Int      @id @default(autoincrement())
+  name      String
+  price     Int
+  category  String   @default("Umum")
+  stock     Int      @default(0)
+  image     String   @default("")
+  createdAt DateTime @default(now()) // Harus ada baris ini!
 }
